@@ -118,6 +118,8 @@ module.exports = defineConfig({
 
     env: {
       URL: "https://naveenautomationlabs.com/opencart/index.php",
+      bearerToken: "zephyr api token",
+      zephyrBaseURL: "https://api.zephyrscale.smartbear.com/v2",
     },
   },
 });
