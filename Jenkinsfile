@@ -87,14 +87,14 @@ pipeline {
 
        stage('Stage 4 - Ensure Report Directory') {
            steps {
-               script {
-                   def reportDir = 'cypress/results/cypress-mochawesome-reporter'
-                   if (!fileExists(reportDir)) {
-                       echo "Creating missing report directory: ${reportDir}"
-                       bat "mkdir -p ${reportDir}"
-                   }
-               }
-           }
+        script {
+            def reportDir = 'cypress/results/cypress-mochawesome-reporter'
+            if (!fileExists(reportDir)) {
+                echo "Creating missing report directory: ${reportDir}"
+                bat "mkdir ${reportDir}"
+            }
+        }
+    }
        }
    }
    
