@@ -7,7 +7,7 @@ pipeline {
     }
    
    tools {
-       nodejs "NodeJS 22.13.0"
+       nodejs "nodejs 22.13.0"
    }
    
    parameters {
