@@ -91,7 +91,7 @@ pipeline {
         always {
             echo 'Publishing the Extent Report'
             publishHTML([
-                    allowMissing: false,
+                    allowMissing: true,
                     alwaysLinkToLastBuild: false,
                     keepAll: true,
                     reportDir: 'cypress/results/cypress-mochawesome-reporter',
