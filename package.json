@@ -4,7 +4,7 @@
   "description": "cypress test automation framework",
   "main": "index.js",
   "scripts": {
-    "results-junit:delete": "rm -rf cypress/results/junit/* || true",
+    "results-junit:delete": "if exist cypress\\results\\junit rmdir /s /q cypress\\results\\junit",
     "results-junit:combine": "jrm cypress/results/junit/combined-report.xml \"cypress/results/junit/*.xml\"",
     "report:pre": "npm run results-junit:delete",
     "report:post": "npm run results-junit:combine",
