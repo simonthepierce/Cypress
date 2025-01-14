@@ -89,9 +89,14 @@ pipeline {
            steps {
         script {
             def reportDir = 'cypress/results/cypress-mochawesome-reporter'
-            if (!fileExists(reportDir)) {
-                echo "Creating missing report directory: ${reportDir}"
-                bat "mkdir ${reportDir}"
+            def workspaceDir = pwd()
+            def fullPath = "${workspaceDir}\\${reportDir}"
+
+            echo "Full report directory path: ${fullPath}"
+
+            if (!fileExists(fullPath)) {
+                echo "Creating missing report directory: ${fullPath}"
+                bat "mkdir \"${fullPath}\""
             }
         }
     }
