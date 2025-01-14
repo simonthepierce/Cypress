@@ -2,9 +2,9 @@ pipeline {
 
    agent any
    
-    options {
-        ansiColor('xterm')
-    }
+   options {
+       ansiColor('xterm')
+   }
    
    tools {
        nodejs 'nodejs'
@@ -60,7 +60,7 @@ pipeline {
    stages {
        stage('Stage 1 - Checkout Code') {
             steps {
-                 git ([
+                 git ([ 
                         branch: 'main',
                         changelog: true,
                         credentialsId: 'simonthepierce',
@@ -85,6 +85,17 @@ pipeline {
            }
        }
 
+       stage('Stage 4 - Ensure Report Directory') {
+           steps {
+               script {
+                   def reportDir = 'cypress/results/cypress-mochawesome-reporter'
+                   if (!fileExists(reportDir)) {
+                       echo "Creating missing report directory: ${reportDir}"
+                       bat "mkdir -p ${reportDir}"
+                   }
+               }
+           }
+       }
    }
    
    post {
