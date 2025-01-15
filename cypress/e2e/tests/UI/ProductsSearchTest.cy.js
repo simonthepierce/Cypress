@@ -14,7 +14,7 @@ describe(
 
     context("Sorting", () => {
       it(
-        "should check that the products are sorted by Price (Low > High)",
+        "PROJ-ID-T9 - should check that the products are sorted by Price (Low > High)",
         { tags: "@smoke" },
         () => {
           ProductsSearchPage.sortSearchResultsBy(SORTING_CRITERIA.PRICE_ASC);
@@ -28,7 +28,7 @@ describe(
         }
       );
 
-      it("should check that the products are sorted by Price (High > Low)", () => {
+      it("PROJ-ID-T10 - should check that the products are sorted by Price (High > Low)", () => {
         ProductsSearchPage.sortSearchResultsBy(SORTING_CRITERIA.PRICE_DESC);
         ProductsSearchPage.allProductsPrices
           .should("not.be.empty")
@@ -39,14 +39,14 @@ describe(
           });
       });
 
-      it("should check that the products are sorted by Name (A - Z)", () => {
+      it("PROJ-ID-T11 - should check that the products are sorted by Name (A - Z)", () => {
         ProductsSearchPage.sortSearchResultsBy(SORTING_CRITERIA.NAME_ASC);
         const productNames = ProductsSearchPage.getAllProductNames();
         const sortedNames = productNames.sort();
         cy.wrap(sortedNames).should("deep.equal", productNames);
       });
 
-      it("should check that the products are sorted by Price Name (Z - A)", () => {
+      it("PROJ-ID-T12 - should check that the products are sorted by Price Name (Z - A)", () => {
         ProductsSearchPage.sortSearchResultsBy(SORTING_CRITERIA.NAME_DESC);
         const productNames = ProductsSearchPage.getAllProductNames();
         const sortedNames = productNames.sort().reverse();
@@ -57,7 +57,7 @@ describe(
     context("Categories", () => {
       productCategories.categories.forEach((category) => {
         it(
-          `should filter the search results by category: ${category.categoryName}`,
+          `KAN-T13 - should filter the search results by category: ${category.categoryName}`,
           { tags: "@smoke" },
           () => {
             ProductsSearchPage.filterSearchResultsByCategory(
