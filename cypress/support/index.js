@@ -1,6 +1,7 @@
+require("@cypress/code-coverage/support");
 before(() => {
-  const token = Cypress.env("bearerToken");
-  const url = Cypress.env("zephyrBaseURL") + "/testcycles";
+  const token = Cypress.env("ZEPHYRAPI");
+  const url = Cypress.env("ZEPHYRURL") + "/testcycles";
 
   const now = new Date();
   const year = now.getFullYear();

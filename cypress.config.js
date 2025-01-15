@@ -34,6 +34,7 @@
  ***********************************************************************************/
 
 const { defineConfig } = require("cypress");
+require("dotenv").config();
 
 module.exports = defineConfig({
   //Cypress uses your projectId and Record Key together to uniquely identify projects.
@@ -113,13 +114,16 @@ module.exports = defineConfig({
       //cypress grep plugin config for tags
       require("@cypress/grep/src/plugin")(config);
 
+      config.env.ZEPHYRAPI =
+        process.env.CYPRESS_ZEPHYRAPI || config.env.ZEPHYRAPI;
+
+      config.env.ZEPHYRURL =
+        process.env.CYPRESS_ZEPHYRURL || config.env.ZEPHYRURL;
       return config;
     },
 
     env: {
       URL: "https://naveenautomationlabs.com/opencart/index.php",
-      bearerToken: "zephyr api token",
-      zephyrBaseURL: "https://api.zephyrscale.smartbear.com/v2",
     },
   },
 });
