@@ -20,7 +20,7 @@ before(() => {
     url: `${url}`,
     method: "POST",
     body: {
-      projectKey: "PROJ-ID",
+      projectKey: "KAN",
       name: `Regression - ${dateTime}`,
     },
   }).then((response) => {
@@ -31,7 +31,7 @@ before(() => {
 afterEach(function () {
   console.log(this.currentTest.state);
 
-  const pattern = /PROJ-ID-T\d+/;
+  const pattern = /KAN-T\d+/;
   const match = this.currentTest.title.match(pattern);
 
   console.log(match[0]);
@@ -41,7 +41,7 @@ afterEach(function () {
   const testCycle = Cypress.env("testCycle");
 
   const requestBody = {
-    projectKey: "PROJ-ID",
+    projectKey: "KAN",
     testCaseKey: `${match[0]}`,
     testCycleKey: `${testCycle}`,
     statusName: "",
