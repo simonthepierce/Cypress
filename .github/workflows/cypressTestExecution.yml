@@ -36,7 +36,7 @@ jobs:
           path: cypress/reports/
 
       - name: Upload Videos
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos/
