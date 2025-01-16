@@ -9,7 +9,7 @@ describe("Account Registration", { tags: ["@Register", "@regression"] }, () => {
   beforeEach(() => {
     LoginPage.openRegistrationPage();
   });
-  it("PROJ-ID-T14 - should register the new user", () => {
+  it("KAN-T14 - should register the new user", () => {
     let password = faker.internet.password();
 
     RegisterPage.enterFirstName(faker.person.firstName())
@@ -25,7 +25,7 @@ describe("Account Registration", { tags: ["@Register", "@regression"] }, () => {
   });
 
   it(
-    "PROJ-ID-T15 - should validate the error messages for missing input fields",
+    "KAN-T15 - should validate the error messages for missing input fields",
     { tags: "@smoke" },
     () => {
       RegisterPage.submitRegistration();

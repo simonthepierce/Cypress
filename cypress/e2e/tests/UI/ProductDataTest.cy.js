@@ -18,7 +18,7 @@ describe(
     });
 
     it(
-      "PROJ-ID-T6 - should validate all the products presence in store",
+      "KAN-T6 - should validate all the products presence in store",
       { tags: "@smoke" },
       () => {
         cy.uiFixture("products").then((products) => {
@@ -36,7 +36,7 @@ describe(
       }
     );
 
-    it("PROJ-ID-T7 - should validate the product data on products search page", () => {
+    it("KAN-T7 - should validate the product data on products search page", () => {
       cy.get("@productData").then((productData) => {
         basePage.header.searchProduct(productData.name);
         ProductsSearchPage.productName(productData.name).should(
@@ -60,7 +60,7 @@ describe(
       });
     });
 
-    it("PROJ-ID-T8 - should validate the product data on product details page", () => {
+    it("KAN-T8 - should validate the product data on product details page", () => {
       cy.get("@productData").then((productData) => {
         basePage.header.searchProduct(productData.name);
 

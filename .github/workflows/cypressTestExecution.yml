@@ -24,10 +24,13 @@ jobs:
         run: npm install
 
       - name: Run Cypress Tests
+        env:
+          ZEPHYRURL: ${{ secrets.ZEPHYRURL }}
+          ZEPHYRAPI: ${{ secrets.ZEPHYRAPI }}
         run: npx cypress run
 
       - name: Upload Test Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-reports
           path: cypress/reports/
@@ -37,4 +40,3 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos/
-
