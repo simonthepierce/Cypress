@@ -17,7 +17,7 @@ describe("adding products to cart", { tags: ["@Cart", "@regression"] }, () => {
   });
 
   it(
-    "PROJ-ID-T1 - should add product to the cart from products search page",
+    "KAN-T1 - should add product to the cart from products search page",
     { tags: "@smoke" },
     function () {
       ProductsSearchPage.addProductToCart(PRODUCT);
@@ -29,7 +29,7 @@ describe("adding products to cart", { tags: ["@Cart", "@regression"] }, () => {
     }
   );
 
-  it("PROJ-ID-T2 - should validate the presence of product in cart", function () {
+  it("KAN-T2 - should validate the presence of product in cart", function () {
     ProductsSearchPage.addProductToCart(PRODUCT);
 
     basePage.header.openShoppingCart();

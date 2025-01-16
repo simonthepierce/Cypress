@@ -21,7 +21,7 @@ describe(
           .and("have.text", "Your wish list is empty.");
       });
 
-      it("PROJ-ID-T16 - should validate the success message for product added to wishlist", () => {
+      it("KAN-T16 - should validate the success message for product added to wishlist", () => {
         ProductDetailsPage.alert.should(
           "contains.text",
           `Success: You have added ${PRODUCT_TO_TEST} to your wish list!`
@@ -29,7 +29,7 @@ describe(
       });
 
       it(
-        "PROJ-ID-T17 - should validate the presence of product in wishlist",
+        "KAN-T17 - should validate the presence of product in wishlist",
         { tags: "@smoke" },
         () => {
           ProductDetailsPage.header.openWishlist();
@@ -48,7 +48,7 @@ describe(
         ProductDetailsPage.addProductToWishlist();
       });
 
-      it("PROJ-ID-T18 - should validate the error message for product added to wishlist", () => {
+      it("KAN-T18 - should validate the error message for product added to wishlist", () => {
         ProductDetailsPage.alert.should(
           "contains.text",
           `You must login or create an account to save ${PRODUCT_TO_TEST} to your wish list!`

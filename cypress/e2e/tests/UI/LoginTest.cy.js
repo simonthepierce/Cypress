@@ -17,7 +17,7 @@ describe(
     });
 
     it(
-      "PROJ-ID-T3 - should login successfully with valid credentials",
+      "KAN-T3 - should login successfully with valid credentials",
       { tags: "@smoke" },
       function () {
         LoginPage.loginWithUI(
@@ -30,7 +30,7 @@ describe(
     );
 
     it(
-      "PROJ-ID-T4 - should fail to login with invalid credentials",
+      "KAN-T4 - should fail to login with invalid credentials",
       { tags: "@smoke" },
       function () {
         LoginPage.loginWithUI(
@@ -42,7 +42,7 @@ describe(
       }
     );
 
-    it("PROJ-ID-T5 - should perform login and logout", function () {
+    it("KAN-T5 - should perform login and logout", function () {
       cy.login();
 
       basePage.header.performLogout();
