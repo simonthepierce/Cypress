@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   cypress-run:
@@ -33,10 +34,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cypress-reports
-          path: cypress/reports/
+          path: cypress/results/cypress-mochawesome-reporter/
 
       - name: Upload Videos
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos/

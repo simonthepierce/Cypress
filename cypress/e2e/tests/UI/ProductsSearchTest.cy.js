@@ -1,7 +1,7 @@
 import { SORTING_CRITERIA } from "../../config/UI/constants";
 import { default as ProductsSearchPage } from "../../pages/ProductsSearchPage";
 import { extractActualPrices } from "../../utils/UI/ProductUtils";
-import productCategories from "../../../fixtures/UI/ProductCategories";
+import productCategories from "../../../fixtures/UI/productCategories";
 
 describe(
   "Products meeting the search criteria",
