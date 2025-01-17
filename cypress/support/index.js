@@ -36,8 +36,8 @@ afterEach(function () {
 
   console.log(match[0]);
 
-  const token = Cypress.env("bearerToken");
-  const url = Cypress.env("zephyrBaseURL") + "/testexecutions";
+  const token = Cypress.env("ZEPHYRAPI");
+  const url = Cypress.env("ZEPHYRURL") + "/testexecutions";
   const testCycle = Cypress.env("testCycle");
 
   const requestBody = {
