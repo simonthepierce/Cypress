@@ -103,6 +103,7 @@ pipeline {
        }
 
     stage('Stage 5 - Run Tests') {
+        steps{
             script {
                     if (params.TEST_SPEC == "cypress/e2e/tests/*.cy.js") {  
                         echo "Running all test scripts with Browser: ${params.BROWSER}, TAG: ${params.TAG}, Environment: ${params.TEST_ENVIRONMENT}"
@@ -122,7 +123,7 @@ pipeline {
                     }
                 }
             }
-
+        }
     }
 
     stage('Stage 6 - Merging JUnit reports') {
