@@ -11,6 +11,13 @@ pipeline {
    }
    
    parameters {
+
+    choice(
+            name: 'BRANCH', 
+            choices: ['main', 'dev'], 
+            description: 'Select the branch to build. Default is main.'
+        )
+
         string(
             name: 'TEST_SPEC', 
             defaultValue: 'cypress/e2e/tests/*.cy.js', 
@@ -61,7 +68,7 @@ pipeline {
        stage('Stage 1 - Checkout Code') {
             steps {
                  git ([ 
-                        branch: 'main',
+                        branch: "${params.BRANCH}",
                         changelog: true,
                         credentialsId: 'simonthepierce',
                         poll: false,
