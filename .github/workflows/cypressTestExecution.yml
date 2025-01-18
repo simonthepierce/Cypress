@@ -26,8 +26,8 @@ jobs:
 
       - name: Run Cypress Tests
         env:
-          ZEPHYRURL: ${{ secrets.ZEPHYRURL }}
-          ZEPHYRAPI: ${{ secrets.ZEPHYRAPI }}
+          CYPRESS_ZEPHYRURL: ${{ secrets.ZEPHYRURL }}
+          CYPRESS_ZEPHYRAPI: ${{ secrets.ZEPHYRAPI }}
         run: npx cypress run
 
       - name: Upload Test Artifacts

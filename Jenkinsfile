@@ -11,6 +11,13 @@ pipeline {
    }
    
    parameters {
+
+    choice(
+            name: 'BRANCH', 
+            choices: ['main', 'dev'], 
+            description: 'Select the branch to build. Default is main.'
+        )
+
         string(
             name: 'TEST_SPEC', 
             defaultValue: 'cypress/e2e/tests/*.cy.js', 
@@ -61,7 +68,7 @@ pipeline {
        stage('Stage 1 - Checkout Code') {
             steps {
                  git ([ 
-                        branch: 'main',
+                        branch: "${params.BRANCH}",
                         changelog: true,
                         credentialsId: 'simonthepierce',
                         poll: false,
@@ -101,6 +108,37 @@ pipeline {
         }
     }
        }
+
+    stage('Stage 5 - Run Tests') {
+        steps{
+            script {
+                    if (params.TEST_SPEC == "cypress/e2e/tests/*.cy.js") {  
+                        echo "Running all test scripts with Browser: ${params.BROWSER}, TAG: ${params.TAG}, Environment: ${params.TEST_ENVIRONMENT}"
+                        withCredentials([
+                    string(credentialsId: 'ZEPHYRAPI', variable: 'CYPRESS_ZEPHYRAPI'),
+                    string(credentialsId: 'ZEPHYRURL', variable: 'CYPRESS_ZEPHYRURL')
+                ]) {
+                        bat "npx cypress run --${params.BROWSER_MODE} --browser ${params.BROWSER} --env environmentName=${params.TEST_ENVIRONMENT},grepTags=${params.TAG} ${params.RECORD_TESTS}"
+                        }
+                    } else {
+                        echo "Running script: ${params.TEST_SPEC} with Browser: ${params.BROWSER}, TAG: ${params.TAG}, Environment: ${params.TEST_ENVIRONMENT}"
+                        withCredentials([
+                    string(credentialsId: 'ZEPHYRAPI', variable: 'CYPRESS_ZEPHYRAPI'),
+                    string(credentialsId: 'ZEPHYRURL', variable: 'CYPRESS_ZEPHYRURL')
+                ]) {
+                        bat "npx cypress run --spec cypress/e2e/tests/${params.TEST_SPEC}.cy.js --${params.BROWSER_MODE} --browser ${params.BROWSER} --env environmentName=${params.TEST_ENVIRONMENT},grepTags=${params.TAG} ${params.RECORD_TESTS}"
+                    }
+                }
+            }
+        }
+    }
+
+    stage('Stage 6 - Merging JUnit reports') {
+           steps {
+               bat "npm run report:post"
+           }
+       }
+
    }
    
    post {
