@@ -1,6 +1,7 @@
 import { PRODUCT_ID_TO_TEST, PRODUCT_TO_TEST } from "../../config/UI/constants";
 import { default as ProductDetailsPage } from "../../pages/ProductDetailsPage";
 import WishlistPage from "../../pages/WishlistPage";
+import { getTcInfo, updateInitFile } from "../../utils/UI/TestCycleUtils";
 
 describe(
   "adding and removing products from wishlist",
@@ -49,10 +50,13 @@ describe(
       });
 
       it("KAN-T18 - should validate the error message for product added to wishlist", () => {
-        ProductDetailsPage.alert.should(
-          "contains.text",
-          `You must login or create an account to save ${PRODUCT_TO_TEST} to your wish list!`
-        );
+        getTcInfo().then((tcStatus) => {
+          ProductDetailsPage.alert.should(
+            "contains.text",
+            `You must login or create an account to save ${PRODUCT_TO_TEST} to your wish list!`
+          );
+          updateInitFile(tcStatus.tcCreation, tcStatus.testCycleKey, true);
+        });
       });
     });
   }

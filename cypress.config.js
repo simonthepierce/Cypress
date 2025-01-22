@@ -86,6 +86,8 @@ module.exports = defineConfig({
     //Path to file to load before spec files load. This file is compiled and bundled.
     supportFile: "cypress/support/e2e.{js,jsx,ts,tsx}",
 
+    watchForFileChanges: false,
+
     setupNodeEvents(on, config) {
       const environmentName = config.env.environmentName || "local";
       const environmentFilename = `./settings/${environmentName}.settings.json`;
